@@ -1,0 +1,61 @@
+<view class="page-container">
+
+  <view class="image-section">
+    <block wx:for="{{details}}" wx:key="{{index}}">
+      <image class="image-item" src="{{item}}" mode="widthFix"/>
+    </block>
+  </view>
+
+  <view class="fixed-bottom">
+      <view class="goods-fixed-bottom-item go-index">首页</view>
+      <view class="goods-fixed-bottom-item go-contact">客服</view>
+      <view class="goods-fixed-bottom-item go-cart" data-type="cart" bindtap="toggleMask">购物车</view>
+      <view class="goods-fixed-bottom-item go-buy" data-type="buy" bindtap="toggleMask">立即购买</view>
+  </view>
+
+
+  <view class="select-mask-container">
+    <view class="select-mask-mask" wx:if="{{active}}" bindtap="toggleMask"></view>
+    <view class="select-mask-content {{active ? 'active' : ''}}">
+      <view class="goods-detail">
+        <view class="goods-info">
+          <image class="info-image" src=""></image>
+          <view class="info-content">
+            <view class="info-title">[新年好礼]“Noise” 粗针织羊毛帽衫 by Daily Weather X Nisei YamM 啦啦啦啦啦啦</view>
+            <view class="info-price">¥599</view>
+          </view>
+        </view>
+        <view class="goods-choose">
+            <view class="choose-color">
+              <view class="choose-title">颜色</view>
+              <view class="choose-list">
+                <view class="choose-item">One Color</view>
+                <view class="choose-item active">Two Color</view>
+                <view class="choose-item">Three Color</view>
+                <view class="choose-item">Four Color</view>
+              </view>
+            </view>
+
+            <view class="choose-size">
+              <view class="choose-title">尺码</view>
+              <view class="choose-list">
+                <view class="choose-item">S</view>
+                <view class="choose-item active">M</view>
+                <view class="choose-item">L</view>
+              </view>
+            </view>
+
+            <view class="choose-num">
+              <view class="choose-title">数量</view>
+              <view class="choose-num-container">
+                  <view class="choose-num-item minus-num">-</view>
+                  <view class="choose-num-item current-num">1</view>
+                  <view class="choose-num-item plus-num">+</view>
+              </view>
+            </view>
+        </view>
+        <view class="goods-btn">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,55 @@
+<view class="page-container">
+  <view class="cart-header" wx:if="{{goods.length !== 0}}">
+    <view class="select-all-container" bindtap="selectAll">
+      <view>
+        <icon wx:if="{{!isSelectAll}}" class="select-radio-icon" type="circle" size="23" ></icon>
+        <icon wx:if="{{isSelectAll}}" class="select-radio-icon"  type="success" color="#ff5a5f" size="23" ></icon>
+        <text class="select-radio-text">全选</text>
+      </view>
+    </view>
+    <view bindtap="checkoutModel">{{isEditor ? '完成' : '编辑'}}</view>
+  </view>
+  <view class="cart-body">
+    <view class="goods-list" wx:if="{{goods.length !== 0}}">
+      <block wx:for="{{goods}}" wx:key="{{index}}">
+        <view class="goods-item {{item.stock == 0 ? 'off-sell' : ''}}">
+          <view class="select-radio-container">
+            <view bindtap="selectItem" data-index="{{index}}" wx:if="{{ isEditor || item.stock != 0 }}">
+              <icon wx:if="{{!item.selected}}" class="select-radio-icon" type="circle" size="23" ></icon>
+              <icon wx:if="{{item.selected}}" class="select-radio-icon" type="success" color="#ff5a5f" size="23" ></icon>
+            </view>
+          </view>
+          <image class="item-image" src="{{item.imageUrl}}">图片</image>
+          <view class="item-info">
+            <view class="item-title" wx:if="{{!isEditor}}">
+              <text class="item-name">{{item.title}}</text>
+              <view class="item-num" wx:if="{{item.stock != 0}}">x<text>{{item.num}}</text></view>
+            </view>
+            <view class="item-price red">¥{{item.price}}</view>
+            <view class="item-choose" wx:if="{{isEditor && item.stock != 0}}">
+              <view class="choose-num-container">
+                <view class="choose-num-item minus-num" bindtap="minuNumEvent" data-index="{{index}}">-</view>
+                <view class="choose-num-item current-num">{{item.num}}</view>
+                <view class="choose-num-item plus-num" bindtap="plusNumEvent" data-index="{{index}}">+</view>
+              </view>
+            </view>
+            <view class="item-detail">
+              <view class="item-size">尺码：{{item.size}}</view>
+              <view class="item-color">颜色：{{item.color}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+      <!-- 购物车为空 -->
+    <view class="goods-empty" wx:if="{{goods.length === 0 && isLogin}}">
+      <text>购物车空空如也，快去挑选商品吧！</text>
+    </view>
+  </view>
+  <view class="cart-footer" wx:if="{{goods.length !== 0}}">
+    <view wx:if="{{!isEditor}}" class="goods-all-price">总计 <text class="red">¥ {{allprice}}</text></view>
+    <view wx:if="{{!isEditor}}" class="goods-active-btn submit-order" bindtap="goPayEvent">提交订单</view>
+    <view wx:if="{{isEditor}}"  class="goods-active-btn delete-goods" bindtap="removeEvent">删除</view>
+  </view>
+</view>

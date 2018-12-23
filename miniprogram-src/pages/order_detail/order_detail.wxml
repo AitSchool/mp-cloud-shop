@@ -1,0 +1,68 @@
+<view class="page-container">
+  <view class="address-section {{orderInfo.status === 1 && 'arrow'}}" data-id="{{orderInfo.id}}" bindtap="addressEvent">
+    <text class="bold" wx:if="{{!address.userName}}">请选择收货地址</text>
+    <block wx:if="{{address}}">
+      <view>
+        <view class="bold">
+          {{address.userName}}
+        </view>
+        <view>{{address.telNumber}}</view>
+        <view>
+          {{address.provinceName}} 
+          {{address.cityName}} 
+          {{address.countyName}} 
+          {{address.detailInfo}}
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view class="order-section">
+    <block wx:for="{{goods}}" wx:key="{{item.id}}">
+      <view class="order-goods">
+        <image class="order-image"  mode="aspectFit" src="{{item.imageUrl}}"></image>
+        <view class="goods-info-container">
+          <view class="goods-name">{{item.title}}</view>
+          <view class="goods-size">尺寸：{{item.size}}</view>
+          <view class="goods-color">颜色：{{item.color}}</view>
+        </view>
+        <view class="goods-price-container">
+          <view class="goods-num">x{{item.num}}</view>
+          <view class="goods-price">￥{{item.price}}</view>
+        </view>
+      </view> 
+    </block>
+  </view>
+
+  <view class="order-info-contaienr">
+    <view class="order-info-item">
+      <view>商品总价</view>
+      <view>￥{{orderInfo.price}}</view>
+    </view>
+    <view class="order-info-item">
+      <view>运费总计</view>
+      <view wx:if="{{orderInfo.freight == 0}}">免运费</view>
+      <view wx:if="{{orderInfo.freight != 0}}">￥{{orderInfo.freight}}</view>
+    </view>
+    <view class="order-info-item" wx:if="{{orderInfo.cheap}}">
+      <view>商品优惠</view>
+      <view>￥{{orderInfo.cheap}}</view>
+    </view>
+    <navigator url="/pages/express/express" class="order-info-item" wx:if="{{orderInfo.express}}">
+      <view>订单号</view>
+      <view>{{orderInfo.express}}</view>
+    </navigator>
+  </view>
+
+  <view class="order-msg">
+    <view class="label">留言</view>
+    <view class="msg">
+      <textarea class="textarea" value="{{message}}" wx:if="{{showtextarea}}" focus="{{focus}}" bindinput="messageEvent" bindblur="bindblurEvent"/>
+      <view wx:if="{{!showtextarea}}" class="textarea" bindtap="bindButtonTap">{{message}}</view>
+    </view>
+  </view>
+  <form class="order-operate" wx:if="{{orderInfo.status}}" report-submit="true" bindsubmit="payEvent">
+    <view>总计：<text class="total">￥{{orderInfo.price + orderInfo.freight - orderInfo.cheap}}</text></view>
+    <button class="btn" formType="submit"  wx:if="{{orderInfo.status == 1}}">结算</button>
+  </form>
+</view>

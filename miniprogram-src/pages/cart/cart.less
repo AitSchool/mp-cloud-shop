@@ -1,0 +1,179 @@
+.cart-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 114rpx;
+  padding: 0 30rpx;
+
+  .select-all-container{
+    .select-radio-icon{
+      vertical-align: middle;
+    }
+    .select-radio-text{
+      font-size: 32rpx;
+      margin-left: 16rpx;
+      vertical-align: middle;
+    }
+  }
+}
+
+.cart-body{
+  padding-bottom: 100rpx;
+}
+
+.goods-item{
+  position: relative;
+  height: 202rpx;
+  padding: 20rpx 30rpx;
+  border-top: 1px solid #dadada;
+  display: flex;
+  align-items: center;
+
+  &.off-sell{
+    opacity: .5;
+
+    &:before{
+      box-sizing: border-box;
+      position: absolute;
+      top: 78rpx;
+      left: 130rpx;
+      padding: 4rpx 10rpx;
+      border: 2rpx solid #ff5a5f;
+      border-radius: 4rpx;
+      font-size: 24rpx;
+      line-height: 1.2;
+      color: #ff5a5f;
+      content: '已下架';
+      z-index: 99;
+    }
+  }
+
+  .item-image{
+    flex: none;
+    width: 160rpx;
+    height: 160rpx;
+    margin:0 32rpx 0 16rpx;
+    background: #f1f1f1;
+  }
+
+  .item-info{
+    flex: 1;
+    position: relative;
+  }
+
+  .item-title{
+    height: 90rpx;
+    display: flex;
+    line-height: 1em;
+    padding-left: 8rpx;
+
+    .item-name{
+      width: 340rpx;
+      overflow: hidden;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+    }
+
+    .item-num{
+      margin-left: 16rpx;
+      font-weight: 500;
+      flex: 1;
+      text-align: right;
+
+      text{
+        font-size: 36rpx;
+      }
+    }
+  }
+
+  .item-detail{
+    width: 270rpx;
+    padding-top: 8rpx;
+    padding-left: 8rpx;
+    border: 2rpx solid transparent;
+    border-top: none;
+    &.border{
+      border-color: #e4e4e4;
+    }
+  }
+
+  .item-size,
+  .item-color{
+    font-size: 24rpx;
+    line-height: 30rpx;
+    color: #666;
+  }
+
+  .item-price{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .item-choose {
+    margin-bottom: 22rpx;
+  }
+}
+
+.choose-num-container{
+  display: flex;
+  height: 68rpx;
+  .choose-num-item{
+    width: 90rpx;
+    height: 68rpx;
+    line-height: 66rpx;
+    border: 2rpx solid #e4e4e4;
+    text-align: center;
+  }
+  .current-num{
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.goods-empty{
+  text {
+    color: #666;
+    font-size: 24rpx;
+    text-align: center;
+  }
+}
+
+.cart-footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
+  height: 100rpx;
+  display: flex;
+  justify-content: flex-end;
+  line-height: 100rpx;
+
+  .goods-all-price{
+    flex: 1;
+    font-size: 14px;
+    text-align: right;
+    padding-right: 40rpx;
+    border-top: 2rpx solid #e4e4e4;
+  }
+
+  .goods-active-btn{
+    width: 220rpx;
+    background: #333;
+    color: #fff;
+    text-align: center;
+
+    &.submit-order{
+      background: #ff5a5f;
+    }
+    &.delete-goods{
+      background: #ff5f5f;
+    }
+  }
+}
+
+.red {
+  color: #ff5a5f;
+}
