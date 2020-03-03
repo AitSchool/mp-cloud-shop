@@ -4,7 +4,7 @@
       <block wx:for="{{banner}}" wx:key="{{index}}">
           <swiper-item>
               <navigator url="/pages/goods/goods?id={{item.id}}" hover-class="navigator-hover">
-                  <image src="{{item.image_url}}" class="banner-item-image" width="750rpx" height="895rpx" mode="scaleToFill"/>
+                  <image src="{{item.image_url}}" class="banner-item-image" width="750rpx" height="950rpx" mode="scaleToFill"/>
               </navigator>
           </swiper-item>
       </block>

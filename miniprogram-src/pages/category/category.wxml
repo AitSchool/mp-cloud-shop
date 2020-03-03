@@ -1,10 +1,11 @@
 <view class="page-container" >
   <!-- 分类 -->
   <view class="swiper-tab-section">
-    <scroll-view scroll-x class="swiper-tab-list" scroll-with-animation scroll-into-view="swiper-tab_{{activeIndex}}" scroll-left="{{scrollLeft}}" >
+    <scroll-view scroll-x class="swiper-tab-list" scroll-with-animation scroll-into-view="swiper-tab_{{activeIndex}}" >
       <block wx:for="{{catagory}}" wx:key="{{item.id}}">
         <view id="swiper-tab_{{item.id}}" class="swiper-tab-item {{ index == activeIndex ? 'active' : '' }}" style="width:{{tabWidth}}px" bindtap="tabClick" data-index="{{index}}">{{item.name}}</view>
       </block>
+
       <view style="transform: translateX({{sliderOffset}}px);width:{{tabWidth}}px" class="swiper-tab-slider"></view>
     </scroll-view>
   </view>
